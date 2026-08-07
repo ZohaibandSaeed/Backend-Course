@@ -1,17 +1,16 @@
 from pydantic import BaseModel
 from fastapi import FastAPI
 
-
 app = FastAPI()
 
 class User(BaseModel):
-    name: str 
+    name: str
     password: str
     age: int
 
 user_list = [{"name": "Zain", "password": "123", "age": 21}]
 
-@app.get('/user')
+@app.get('/users')
 def get_user():
     return user_list
 
@@ -28,7 +27,6 @@ def add_user(user: User):
 
 @app.delete('/deleteuser')
 def delete_user(user: User):
-
     for temp_user in user_list:
         if temp_user["name"] == user.name:
             user_list.remove(temp_user)
@@ -44,4 +42,24 @@ def update_user(name: str, user: User):
             temp_user["age"] = user.age
             return "user updated"
     return "user not found"
-            
+
+@app.get('/getuser/{test}')
+def get_user(test: int):
+    print(test)
+    return test
+
+@app.get('/testuser/')
+def test_user(id: int, test: str):
+    print (id, test)
+    return {"id": id, "test": test}
+
+
+# @app.get('/getdata/{id}')
+# def get_data(id: int):
+#     return id
+
+# @app.get("/test")
+# def test(id: int, name: str):
+#     print("id: ", id)
+#     print("name: ", name)
+#     return {"id": id, "name": name}
