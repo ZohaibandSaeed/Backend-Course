@@ -15,13 +15,6 @@
         "models": {
           "User": {
             "fields": {
-              "email": {
-                "nullable": false,
-                "type": {
-                  "codecId": "pg/text@1",
-                  "kind": "scalar"
-                }
-              },
               "id": {
                 "nullable": false,
                 "type": {
@@ -29,7 +22,14 @@
                   "kind": "scalar"
                 }
               },
-              "name": {
+              "password": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "username": {
                 "nullable": false,
                 "type": {
                   "codecId": "pg/text@1",
@@ -40,14 +40,14 @@
             "relations": {},
             "storage": {
               "fields": {
-                "email": {
-                  "column": "email"
-                },
                 "id": {
                   "column": "id"
                 },
-                "name": {
-                  "column": "name"
+                "password": {
+                  "column": "password"
+                },
+                "username": {
+                  "column": "username"
                 }
               },
               "namespaceId": "public",
@@ -65,11 +65,6 @@
           "table": {
             "user": {
               "columns": {
-                "email": {
-                  "codecId": "pg/text@1",
-                  "nativeType": "text",
-                  "nullable": false
-                },
                 "id": {
                   "codecId": "pg/int4@1",
                   "default": {
@@ -79,7 +74,12 @@
                   "nativeType": "int4",
                   "nullable": false
                 },
-                "name": {
+                "password": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": false
+                },
+                "username": {
                   "codecId": "pg/text@1",
                   "nativeType": "text",
                   "nullable": false
@@ -95,7 +95,7 @@
               "uniques": [
                 {
                   "columns": [
-                    "email"
+                    "username"
                   ]
                 }
               ]
@@ -106,7 +106,7 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "635bc1afbca70c0b94adb5b791d5748346cfb1523fa1f83d5869052c6e88e52b"
+    "storageHash": "9c8af6e6d7232b501506778285028107f7993d96469108b8ef54249907d764cd"
   },
   "capabilities": {
     "postgres": {

@@ -1,17 +1,23 @@
 {
-  "name": "node",
+  "name": "node_server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "run": "npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "prisma skills sync || exit 0"
+    "contract:emit": "prisma contract emit"
   },
   "keywords": [],
   "type": "module",
+  "dependencies": {
+    "@prisma/orm-postgres": "^8.0.0-rc.8",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  },
   "devDependencies": {
-    "prisma": "^8.0.0-rc.12"
+    "@prisma/cli-engine": "^0.2.3",
+    "@types/node": "^26.4.0",
+    "prisma": "^8.0.0-rc.10"
   }
 }

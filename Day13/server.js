@@ -1,16 +1,15 @@
-import dotenv from "dotenv";
 import express from "express";
-import userRouter from "./routers.js/users.js";
-
-dotenv.config();
+import testRouter from "./src/routers/test.router.js";
+import userRouter from "./src/routers/user.router.js";
 
 const app = express();
+
 app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
-
+app.use("/api", testRouter);
 app.use("/api", userRouter);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(3000, () => {
+    console.log("Server is running at port 3000...");
 });
+
