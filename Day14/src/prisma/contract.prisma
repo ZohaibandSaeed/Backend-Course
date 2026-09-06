@@ -1,0 +1,9 @@
+
+model FileModel {
+  id          Int      @id @default(autoincrement())
+  filename    String
+  fileurl     String
+  imagekitId  String
+  createdAt   TimestamptzString @default(now())
+  updatedAt   temporal.updatedAtString()
+}

@@ -1,0 +1,26 @@
+{
+  "name": "day14",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "contract:emit": "prisma contract emit"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "@imagekit/javascript": "^5.4.1",
+    "@imagekit/nodejs": "^7.11.0",
+    "@prisma/orm-postgres": "^8.0.0-rc.8",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "multer": "^2.3.0"
+  },
+  "devDependencies": {
+    "@prisma/cli-engine": "^0.2.3",
+    "@types/node": "^26.4.1",
+    "prisma": "^8.0.0-rc.10"
+  }
+}
