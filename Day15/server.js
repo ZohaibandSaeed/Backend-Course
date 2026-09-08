@@ -1,11 +1,17 @@
 import express from "express";
 import dotenv from "dotenv";
 
+import { ConnectDB } from "./src/config/database.js";
+import authRouter from "./src/routes/auth.route.js";
+
 dotenv.config();
 
 const app = express();
 
+ConnectDB();
+
 app.use(express.json());
+app.use("/api/auth", authRouter);
 
 app.get("/", (req, res) => {
     console.log("Hello Word");
