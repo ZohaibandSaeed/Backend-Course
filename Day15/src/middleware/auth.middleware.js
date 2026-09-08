@@ -6,8 +6,22 @@ dotenv.config();
 async function AuthMiddleWare(req, res, next) {
     try {
 
+        const brower_token = req.cookies.accessToken;
+
+        if (!brower_token) {
+            return res.status(401).json({ error: "Unauthorized" });
+        }
+
+        const verify_token = jwt.verify(brower_token, process.env.JWT_SECRET);
+
+        req.user = verify_token;
+
+        next();
+
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Internal Server Error" });
+        return res.status(400).json({ error: "Invalid Token" });
     }
 }
+
+export { AuthMiddleWare };
