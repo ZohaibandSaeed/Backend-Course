@@ -17,6 +17,7 @@ async function Register(req, res) {
             username: payload.username,
             email: payload.email,
             password: hashpassword,
+            role: payload.role,
         });
 
         if (!user) {
@@ -53,6 +54,7 @@ async function Login(req, res) {
 
         const token = jwt.sign({
             _id: current_user._id,
+            role: current_user.role,
         }, process.env.JWT_SECRET, {
             expiresIn: "1h",
         });

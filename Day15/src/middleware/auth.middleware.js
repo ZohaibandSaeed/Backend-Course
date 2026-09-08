@@ -24,4 +24,19 @@ async function AuthMiddleWare(req, res, next) {
     }
 }
 
-export { AuthMiddleWare };
+async function IsAdmin(req, res, next) {
+    try {
+
+        if (req.user && req.user.role === "admin") {
+            next();
+        } else {
+            return res.status(403).json({ error: "Access Denied: You are not Admin" });
+        }
+
+    } catch (error) {
+        console.error(error);
+        return res.status(400).json({ error: "Invalid Token" });
+    }
+}
+
+export { AuthMiddleWare, IsAdmin };
