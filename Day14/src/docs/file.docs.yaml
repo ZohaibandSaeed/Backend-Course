@@ -1,0 +1,41 @@
+tags:
+  name: File Management
+  description: APIs for file upload and deletion
+
+/file/upload:
+  post:
+    summary: Upload a single file
+    tags: [File Management]
+    requestBody:
+      required: true
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+                description: File to upload
+    responses:
+      200:
+        description: File uploaded successfully
+      400:
+        description: No file provided
+
+/file/delete/{id}:
+  delete:
+    summary: Delete a file by ID
+    tags: [File Management]
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        description: ImageKit file ID to delete
+    responses:
+      200:
+        description: File deleted successfully
+      400:
+        description: Please provide imagekit id

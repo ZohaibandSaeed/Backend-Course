@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import fileRoute from "./src/routes/file.route.js";
+import { setupSwagger } from "./src/swagger.js";
 
 
 dotenv.config();
@@ -8,6 +9,8 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
+
+setupSwagger(app);
 
 app.use("/file", fileRoute);
 

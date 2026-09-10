@@ -5,6 +5,7 @@ import { upload } from "../middlewares/upload.multer.js";
 const router = Router();
 
 router.post("/upload", upload.single("file"), UploadFile);
+
 router.delete("/delete/:id", DeleteFile);
 
 export default router;
